@@ -79,11 +79,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Save&amp;Load\GlobalSaveFile.cs" />
+    <Compile Include="Assets\Scripts\Save&amp;Load\SaveGameFile.cs" />
+    <Compile Include="Assets\Scripts\Save&amp;Load\SaveLoad.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\UI\SetSaves.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\test.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

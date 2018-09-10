@@ -6,18 +6,29 @@ using UnityEngine.UI;
 public class SetSaves : MonoBehaviour
 {
 	private Dropdown saveDropdown;
+	private List<SaveGameFile> SavedGames;
 	
 	void Start ()
 	{
 		saveDropdown = GetComponent<Dropdown>();
+
+		List<Dropdown.OptionData> SavesOptions = new List<Dropdown.OptionData>();
+		SavedGames = SaveLoad.LoadAllSaves();
+		
+		foreach(SaveGameFile save in SavedGames)
+		{
+			SavesOptions.Add(new Dropdown.OptionData(save.SaveGameName));
+		}
+
+		saveDropdown.options = SavesOptions;
+
 		saveDropdown.onValueChanged.AddListener(delegate {
 			DropdownValueChanged(saveDropdown);
 		});
-		//set saves
 	}
 	
 	void DropdownValueChanged(Dropdown change)//Changes the save to load at the start of gameplay
 	{
-		GlobalVariables.CurrentSaveProfile = change.itemText.text;
+		GlobalVariables.CurrentSaveProfile = SavedGames[change.value];
 	}
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public static class GlobalVariables
 {
-	private static string _currentSaveProfile;
+	private static SaveGameFile _currentSaveProfile;
+	private static GlobalSaveFile _globalSaveData = SaveLoad.LoadGlobalSaveData();
 
-	public static string CurrentSaveProfile
+	public static SaveGameFile CurrentSaveProfile
 	{
 		get
 		{
@@ -15,6 +16,18 @@ public static class GlobalVariables
 		set
 		{
 			_currentSaveProfile = value;
+		}
+	}
+
+	public static GlobalSaveFile GlobalSaveData
+	{
+		get
+		{
+			return _globalSaveData;
+		}
+		set
+		{
+			_globalSaveData = value;
 		}
 	}
 }
