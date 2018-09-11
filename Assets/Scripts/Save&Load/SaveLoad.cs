@@ -47,7 +47,7 @@ public static class SaveLoad
 	public static SaveGameFile LoadFirstSave()
 	{
 		CheckSaveFolder();
-		string destination = Application.persistentDataPath + "/SaveGames";
+		string destination = Application.persistentDataPath + "/SaveGames/";
 		BinaryFormatter bf = new BinaryFormatter();
 
 
@@ -69,7 +69,7 @@ public static class SaveLoad
 	{
 		CheckSaveFolder();
 		List<SaveGameFile> Saves = new List<SaveGameFile>();
-		string destination = Application.persistentDataPath + "/SaveGames";
+		string destination = Application.persistentDataPath + "/SaveGames/";
 		BinaryFormatter bf = new BinaryFormatter();
 
 
@@ -110,7 +110,7 @@ public static class SaveLoad
 	public static bool DoSavesExist()
 	{
 		CheckSaveFolder();
-		string destination = Application.persistentDataPath + "/SaveGames";
+		string destination = Application.persistentDataPath + "/SaveGames/";
 		foreach (string file in System.IO.Directory.GetFiles(destination))
 		{
 			if (file.EndsWith(".SaveGame")) return true;
@@ -121,7 +121,7 @@ public static class SaveLoad
 	public static int GetNumSaves()
 	{
 		CheckSaveFolder();
-		string destination = Application.persistentDataPath + "/SaveGames";
+		string destination = Application.persistentDataPath + "/SaveGames/";
 		int c = 0;
 		foreach (string file in System.IO.Directory.GetFiles(destination))
 		{
@@ -132,10 +132,10 @@ public static class SaveLoad
 
 	private static void CheckSaveFolder()
 	{
-		string destination = Application.persistentDataPath + "/SaveGames";
+		string destination = Application.persistentDataPath + "/SaveGames/";
 		if (!File.Exists(destination))
 		{
-			File.Create(destination);
+			System.IO.Directory.CreateDirectory(destination);
 		}
 	}
 }
